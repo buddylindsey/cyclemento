@@ -1,0 +1,40 @@
+header {
+    border-bottom: 1px solid orange;
+}
+
+.navbar-cycle {
+    height: 50px;
+}
+
+.navbar-brand-cycle {
+    margin-top: -10px;
+}
+
+.registration {
+    margin: 10px 0px 10px 0px;
+}
+
+.registration-header {
+    padding: 5px 0px 5px 10px;
+}
+
+.registration-panel {
+    padding: 0px 0px 5px 0px;
+}
+
+.registration-panel input[type="email"], .registration-panel input[type="text"],
+.registration-panel input[type="password"], .login-panel input[type="text"],
+.login-panel input[type="password"] {
+    font-size: 14px;
+    min-height: 32px;
+    padding: 8px 10px;
+    width: 260px;
+    border: 1px solid #666;
+    margin: 6px 0px;
+}
+
+.btn-signup {
+    background-color: #FC4C02;
+    color: white;
+    border: red 1px solid;
+}
