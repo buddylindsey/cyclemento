@@ -26,4 +26,19 @@
         </div>
     </div>
 </div>
+<div class="row">
+    <div class="col-md-offset-4 col-md-6">
+        <div class="">
+            <h1>Associate with Strava</h1>
+        </div>
+        <div>
+            {% if strava %}
+            <a href="{{ url('social:begin', 'strava') }}"><img src="http://strava.github.io/api/images/ConnectWithStrava.png" /></a>
+            {% else %}
+            Connected to Strava
+            {% endif %}
+        </div>
+    </div>
+</div>
+
 {% endblock %}

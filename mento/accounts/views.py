@@ -78,6 +78,12 @@ class SettingsView(LoginRequiredMixin, FormMessagesMixin, FormView):
         update_session_auth_hash(self.request, form.user)
         return super(SettingsView, self).form_valid(form)
 
+    def get_context_data(self, **kwargs):
+        context = super(SettingsView, self).get_context_data(**kwargs)
+        context['strava'] = self.request.user.social_auth.filter(
+            provider='strava').exists()
+        return context
+
 
 class DashboardView(LoginRequiredMixin, TemplateView):
     template_name = 'accounts/dashboard.jinja'

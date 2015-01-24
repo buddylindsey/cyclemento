@@ -10,6 +10,8 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from django.conf import global_settings
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -41,6 +43,7 @@ DEFAULT_APPS = (
 THIRD_PARTY_APPS = (
     'django_extensions',
     'django_jinja',
+    'social.apps.django_app.default',
 )
 
 LOCAL_APPS = (
@@ -48,6 +51,17 @@ LOCAL_APPS = (
 )
 
 INSTALLED_APPS = DEFAULT_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+
+AUTHENTICATION_BACKENDS = (
+    'social.backends.strava.StravaOAuth',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
+    'django.core.context_processors.request',
+    'social.apps.django_app.context_processors.backends',
+    'social.apps.django_app.context_processors.login_redirect',
+)
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -110,6 +124,20 @@ TEMPLATE_LOADERS = (
 )
 
 DEFAULT_JINJA2_TEMPLATE_EXTENSION = '.jinja'
+
+# Social settings
+
+SOCIAL_AUTH_STRAVA_KEY = ''
+SOCIAL_AUTH_STRAVA_SECRET = ''
+
+SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = ['username', 'email']
+
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/accounts/dashboard/'
+LOGIN_ERROR_URL = '/accounts/login-error/'
+
+# API Keys
+STRAVA_PUBLIC_KEY = ''
 
 try:
     from local_settings import *

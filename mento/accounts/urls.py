@@ -13,4 +13,6 @@ urlpatterns = patterns(
         name='password_recovery'),
     url(r'^dashboard/$', DashboardView.as_view(), name="dashboard"),
     url(r'^settings/$', SettingsView.as_view(), name="settings"),
+    url(r'^social/',
+        include('social.apps.django_app.urls', namespace='social'))
 )
