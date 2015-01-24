@@ -44,6 +44,7 @@ THIRD_PARTY_APPS = (
     'django_extensions',
     'django_jinja',
     'social.apps.django_app.default',
+    'djcelery',
 )
 
 LOCAL_APPS = (
@@ -138,6 +139,14 @@ LOGIN_ERROR_URL = '/accounts/login-error/'
 
 # API Keys
 STRAVA_PUBLIC_KEY = ''
+
+# Celery
+
+BROKER_URL = 'redis://127.0.0.1:6379/0'
+BROKER_TRANSPORT = 'redis'
+CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
+
+
 
 try:
     from local_settings import *
