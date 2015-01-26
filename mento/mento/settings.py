@@ -49,6 +49,9 @@ THIRD_PARTY_APPS = (
 
 LOCAL_APPS = (
     'accounts',
+    'gear',
+    'activities',
+    'notifications',
 )
 
 INSTALLED_APPS = DEFAULT_APPS + THIRD_PARTY_APPS + LOCAL_APPS
