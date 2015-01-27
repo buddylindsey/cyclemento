@@ -1,3 +1,15 @@
 from django.contrib import admin
 
-# Register your models here.
+from gear.models import Gear, Compontent
+
+
+class GearAdmin(admin.ModelAdmin):
+    pass
+
+
+class CompontentAdmin(admin.ModelAdmin):
+    pass
+
+
+admin.site.register(Gear, GearAdmin)
+admin.site.register(Compontent, CompontentAdmin)
