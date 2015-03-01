@@ -5,6 +5,7 @@ site_root = '/var/www/mento/mento'
 
 def stop_celery():
     run('service celeryd stop')
+    run('service celerybeat stop')
 
 def pull_code():
     run('git pull origin master')
@@ -20,6 +21,7 @@ def build_static():
 
 def start_celery():
     run('service celeryd start')
+    run('service celerybeat start')
 
 def restart_gunicorn():
     run('supervisorctl restart gunicorn')
