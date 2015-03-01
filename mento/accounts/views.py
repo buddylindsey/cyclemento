@@ -11,6 +11,11 @@ from braces.views import FormMessagesMixin, LoginRequiredMixin
 
 from .mixins import NextUrlMixin
 from .forms import UserCreateForm, PasswordRecoveryForm
+from activities.models import Activity
+from gear.models import Gear
+from maintenance.forms import MaintenanceForm
+
+from activities.tasks import get_strava_activities_by_user
 
 
 class AccountRegistrationView(FormMessagesMixin, NextUrlMixin, CreateView):
@@ -27,6 +32,14 @@ class AccountRegistrationView(FormMessagesMixin, NextUrlMixin, CreateView):
             password=form.cleaned_data['password1'])
         auth_login(self.request, user)
         return HttpResponseRedirect(self.get_success_url())
+
+
+class NewAssociationView(TemplateView):
+    template_name = 'accounts/new_association.jinja'
+
+    def get(self, request, *args, **kwargs):
+        get_strava_activities_by_user.delay(self.request.user.id)
+        return super(NewAssociationView, self).get(request, args, kwargs)
 
 
 class LoginView(FormMessagesMixin, NextUrlMixin, FormView):
@@ -80,6 +93,7 @@ class SettingsView(LoginRequiredMixin, FormMessagesMixin, FormView):
 
     def get_context_data(self, **kwargs):
         context = super(SettingsView, self).get_context_data(**kwargs)
+
         context['strava'] = self.request.user.social_auth.filter(
             provider='strava').exists()
         return context
@@ -87,3 +101,14 @@ class SettingsView(LoginRequiredMixin, FormMessagesMixin, FormView):
 
 class DashboardView(LoginRequiredMixin, TemplateView):
     template_name = 'accounts/dashboard.jinja'
+
+    def get_context_data(self, **kwargs):
+        context = super(DashboardView, self).get_context_data(**kwargs)
+        activities = Activity.objects.filter(
+            user=self.request.user).order_by('-start_date')
+        context['activities']  = activities
+        context['gears'] = Gear.objects.filter(user=self.request.user)
+        if activities.count() > 0:
+            context['maintenance_form'] = MaintenanceForm(
+                user=self.request.user)
+        return context

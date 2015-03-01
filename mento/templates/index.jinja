@@ -1,5 +1,91 @@
 {% extends "base.jinja" %}
 
+{% block underheader %}
+<div class="container-fluid homepage-banner">
+    <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 center">
+        <div class="header-text">
+            <h2 class="homepage-header">Manage Your Maintenance Better</h2>
+            <div class="homepage-body">
+                <div class="body1">Why think about maintenance?</div>
+                <div class="body2">That's why we're here.</div>
+            </div>
+        </div>
+        <a href="{{ url("register") }}" class="btn btn-default btn-homepage">Sign Up Now</a>
+    </div>
+</div>
+{% endblock %}
+
 {% block content %}
-I am home
+<div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="center orange">
+            <i class="fa fa-bicycle fa-5x"></i>
+        </div>
+        <div class="center homepage-compontent">
+            <h3>Ride</h3>
+            Ride as much as you want.
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="center orange">
+            <i class="fa fa-mobile fa-5x"></i>
+        </div>
+        <div class="center homepage-compontent">
+            <h3>Track</h3>
+            Track milage using your favorite app.
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="center orange">
+            <i class="fa fa-wifi fa-5x"></i>
+        </div>
+        <div class="center homepage-compontent">
+            <h3>Get Notified</h3>
+            Get notified when your maintenance should be done.
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="center orange">
+            <i class="fa fa-wrench fa-5x"></i>
+        </div>
+        <div class="center homepage-compontent">
+            <h3>Fix</h3>
+            Keep your peace of mind by getting a tune up and fixing things.
+        </div>
+    </div>
+
+</div>
+<div class="row">
+    <div class="center faq-title" id="faq">
+        <h2>Frequently Asked Questions</h2>
+    </div>
+    <div class="col-md-6 col-sm-6 col-xs-12 faq-col">
+        <div class="faq-item">
+            <h3 class="question"><i class="fa fa-question-circle orange"></i>  What is the purpose of CycleMento?</h3>
+            <p class="answer">
+                To help you keep your bike in the best shape it can be. If you are like many people you forget to do regular maintenance, and what you have done. CycleMento is here to help you to remember to do maintenance, and what you have done.
+            </p>
+        </div>
+        <div class="faq-item">
+            <h3 class="question"><i class="fa fa-question-circle orange"></i>  How do you track distances?</h3>
+            <p class="answer">
+                We connect to Strava and calculate your latest activity. When we see you have reached a certain mileage we will send you a reminder that it is time to get a tune up on your bike?
+            </p>
+        </div>
+    </div>
+    <div class="col-md-6 col-sm-6 col-xs-12 faq-col">
+        <div class="faq-item">
+            <h3 class="question"><i class="fa fa-question-circle orange"></i>  There is no "Standard Maintenance Schedule"</h3>
+            <p class="answer">
+                How often do you forget to do a tune-up? For most people that is quite often. That is why we are here to remind you regularly, so when you do forget you wont forget for too long.
+            </p>
+        </div>
+        <div class="faq-item">
+            <h3 class="question"><i class="fa fa-question-circle orange"></i>  How often do you send a reminder?</h3>
+            <p class="answer">
+                For now, every 1000 miles after you register some maintenance. This keeps it to a good round number, as 1000 miles is just long enough to not easily keep up with amount if you do less than 100 miles a week.
+            </p>
+        </div>
+    </div>
+</div>
 {% endblock %}

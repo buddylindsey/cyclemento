@@ -1,14 +1,62 @@
 header {
     border-bottom: 1px solid orange;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .navbar-cycle {
-    height: 50px;
+    border-bottom: 1px solid orange;
+    margin-bottom: 0px;
+}
+
+.navbar-cycle {
 }
 
 .navbar-brand-cycle {
     margin-top: -10px;
+}
+
+.navbar-logo {
+    height: 40px;
+}
+
+.header-text {
+    margin-top: 115px;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.body2 {
+    margin-left: -75px;
+}
+
+.homepage-header {
+    font-size: 50px;
+    font-weight: 900;
+}
+
+.btn-homepage {
+    margin-top: 15px;
+    background-color: orange;
+    border: none;
+    border-bottom: 1px solid white;
+    color: white;
+    border-radius: 0px;
+    font-size: 18px;
+}
+
+.header-text {
+    font-size: 20px;
+}
+
+.homepage-banner {
+    background-image: url('/static/img/cycle-mento-homepage.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    color: #FFF;
+    height: 450px;
+    margin-bottom: 50px;
 }
 
 .registration {
@@ -38,4 +86,85 @@ header {
     background-color: #FC4C02;
     color: white;
     border: red 1px solid;
+}
+
+.activity {
+    min-height: 100px;
+    padding-left: 60px;
+}
+
+.activity .activity-logo {
+    max-height: 50px;
+    display: inline-block;
+    position: relative;
+    float: left;
+    margin-left: -60px;
+}
+
+.activity .activity-header {
+    font-size: 1.25em;
+}
+
+.activity .activity-meta {
+
+}
+
+.center {
+    text-align: center;
+}
+
+.orange {
+    color: orange;
+}
+
+.homepage-compontent h3 {
+    font-weight: bold;
+}
+
+.homepage-banner {
+    background-color: blue;
+}
+
+.faq-title {
+    margin-top: 20px;
+    margin-bottom: 60px;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
+}
+
+.faq-col {
+    font-size: 14px;
+}
+
+.faq-col .answer {
+    font-weight: 300;
+}
+
+.faq-col .faq-item {
+    padding: 30px;
+    background: none repeat scroll 0% 0% padding-box #F5F5F5;
+    margin-bottom: 30px;
+    border-radius: 4px;
+    border-bottom: 3px solid orange;
+}
+
+.faq-col .faq-item .question {
+    margin-top: 0px;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.faq-col .faq-item .answer {
+    color: #777;
+    font-weight: 300;
+    font-size: 13px;
+    padding: 0px 0px 10px;
+}
+
+.footer {
+    height: 75px;
+    background-color: #F5F5F5;
+    padding-top: 25px;
 }

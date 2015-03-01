@@ -52,6 +52,7 @@ LOCAL_APPS = (
     'gear',
     'activities',
     'notifications',
+    'maintenance',
 )
 
 INSTALLED_APPS = DEFAULT_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -130,11 +131,11 @@ TEMPLATE_LOADERS = (
 DEFAULT_JINJA2_TEMPLATE_EXTENSION = '.jinja'
 
 # Social settings
-
 SOCIAL_AUTH_STRAVA_KEY = ''
 SOCIAL_AUTH_STRAVA_SECRET = ''
 
 SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = ['username', 'email']
+SOCIAL_AUTH_NEW_ASSOCIATION_REDIRECT_URL = '/accounts/new-association/'
 
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/accounts/dashboard/'
@@ -144,11 +145,9 @@ LOGIN_ERROR_URL = '/accounts/login-error/'
 STRAVA_PUBLIC_KEY = ''
 
 # Celery
-
 BROKER_URL = 'redis://127.0.0.1:6379/0'
 BROKER_TRANSPORT = 'redis'
 CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
-
 
 
 try:

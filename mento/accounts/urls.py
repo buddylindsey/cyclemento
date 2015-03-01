@@ -1,8 +1,8 @@
 from django.conf.urls import patterns, url, include
 
 from .views import (
-    AccountRegistrationView, LoginView, LogoutView, PasswordRecoveryView,
-    DashboardView, SettingsView)
+    AccountRegistrationView, NewAssociationView, LoginView, LogoutView,
+    PasswordRecoveryView, DashboardView, SettingsView)
 
 urlpatterns = patterns(
     '',
@@ -14,5 +14,7 @@ urlpatterns = patterns(
     url(r'^dashboard/$', DashboardView.as_view(), name="dashboard"),
     url(r'^settings/$', SettingsView.as_view(), name="settings"),
     url(r'^social/',
-        include('social.apps.django_app.urls', namespace='social'))
+        include('social.apps.django_app.urls', namespace='social')),
+    url(r'^new-association/$', NewAssociationView.as_view(),
+        name='new_association'),
 )

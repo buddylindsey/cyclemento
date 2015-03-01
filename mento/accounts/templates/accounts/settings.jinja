@@ -32,11 +32,15 @@
             <h1>Associate with Strava</h1>
         </div>
         <div>
-            {% if strava %}
-            <a href="{{ url('social:begin', 'strava') }}"><img src="http://strava.github.io/api/images/ConnectWithStrava.png" /></a>
-            {% else %}
-            Connected to Strava
-            {% endif %}
+            <ul>
+                <li>
+                    {% if not strava %}
+                    <a href="{{ url('social:begin', 'strava') }}">Connect with Strava</a>
+                    {% else %}
+                    Connected with Strava - <form method="post" action="{{ url('social:disconnect', 'strava') }}">{% csrf_token %}<input type="submit" value="disconnect" /></form>
+                    {% endif %}
+                </li>
+            </ul>
         </div>
     </div>
 </div>
