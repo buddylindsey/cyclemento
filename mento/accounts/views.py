@@ -19,7 +19,7 @@ from maintenance.forms import MaintenanceForm
 from activities.tasks import get_strava_activities_by_user
 
 
-class AccountRegistrationView(FormMessagesMixin, NextUrlMixin, CreateView):
+class AccountRegistrationView(FormMessagesMixin, CreateView):
     template_name = 'accounts/register.jinja'
     form_class = UserCreateForm
     success_url = reverse_lazy('dashboard')
