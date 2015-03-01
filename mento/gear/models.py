@@ -5,6 +5,7 @@ from model_utils import Choices
 
 from activities.mixins import DistanceMixin
 from activities.models import Activity
+from maintenance.models import Maintenance
 
 
 class Gear(DistanceMixin, TimeStampedModel):

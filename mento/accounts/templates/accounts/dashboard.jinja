@@ -48,7 +48,7 @@
     <div class="col-xs-6 col-md-4">
         <h2>Gear</h2>
         <div>
-        {% if gear %}
+        {% if gears %}
             {% for gear in gears %}
             <div>{{ gear.name }} - {{ gear.activity_distance() }} mi</div>
             {% else %}
@@ -58,7 +58,7 @@
         </div>
         <h2>Last Maintenance</h2>
         <div>
-        {% if gear %}
+        {% if gears %}
             {% for gear in gears %}
             <div>{{ gear.name }} - {{ gear.distance_since_last_maintenance() }} mi</div>
             {% else %}
