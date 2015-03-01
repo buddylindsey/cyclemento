@@ -56,7 +56,11 @@ class Gear(DistanceMixin, TimeStampedModel):
         return sum(data)
 
     def distance_since_last_maintenance(self):
-        main = self.maintenance.latest()
+        try:
+            main = self.maintenance.latest()
+        except Maintenance.DoesNotExist:
+            return 0
+
         activities = Activity.objects.filter(
             start_date__gt=main.activity.start_date, gear=self)
         return self.activity_distance(activities=activities)

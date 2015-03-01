@@ -1,3 +1,4 @@
+from django.http import HttpResponseRedirect
 from django.views.generic import (
     FormView, RedirectView, CreateView, TemplateView)
 from django.core.urlresolvers import reverse_lazy
