@@ -32,7 +32,7 @@ class AccountRegistrationView(FormMessagesMixin, CreateView):
             username=saved_user.username,
             password=form.cleaned_data['password1'])
         auth_login(self.request, user)
-        return HttpResponseRedirect(self.get_success_url())
+        return HttpResponseRedirect(self.success_url)
 
 
 class NewAssociationView(TemplateView):
