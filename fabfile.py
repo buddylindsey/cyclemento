@@ -3,8 +3,12 @@ from fabric.api import env, cd, sudo, task, run, prefix
 env.hosts = ['root@cyclemento.com']
 site_root = '/var/www/mento/mento'
 
+@task
 def stop_celery():
     run('service celeryd stop')
+
+@task
+def stop_celerybeat():
     run('service celerybeat stop')
 
 def pull_code():
@@ -19,10 +23,15 @@ def migrate():
 def build_static():
     run('./manage.py collectstatic --noinput')
 
+@task
 def start_celery():
     run('service celeryd start')
+
+@task
+def start_celerybeat():
     run('service celerybeat start')
 
+@task
 def restart_gunicorn():
     run('supervisorctl restart gunicorn')
 
