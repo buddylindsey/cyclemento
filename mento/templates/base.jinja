@@ -29,6 +29,8 @@
                 </div>
                 <div class="collapse navbar-collapse" id="navmenu-collapse">
                     <ul class="nav navbar-nav">
+                        <li><a href="{{ url("home") }}#faq">FAQ</a></li>
+                        <li><a href="{{ url("feedback") }}">Contact</a></li>
                     </ul>
                     {% if user.is_authenticated() %}
                     <ul class="nav navbar-nav navbar-right">
