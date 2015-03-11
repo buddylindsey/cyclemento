@@ -54,4 +54,4 @@ def retrieve_activities(days=None):
         social_auth__provider='strava').values_list('id', flat=True)
 
     for user in users:
-        get_strava_activities_by_user.delay(user, days)
+        get_strava_activities_by_user.delay(user_id=user, days=-1)
