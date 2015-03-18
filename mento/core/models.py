@@ -1,9 +1,11 @@
 from django.db import models
 
+from model_utils import Choices
+
 
 class DistanceModel(models.Model):
     DISTANCE_UNITS = Choices(
-        ('m','Meter'), ('ft', 'Foot'), ('mi', 'Miles'), ('km', 'Kilomieter'))
+        ('m','Meter'), ('ft', 'Foot'), ('mi', 'Miles'), ('km', 'Kilometer'))
 
     distance = models.FloatField(default=0.0, blank=True, null=True)
     distance_unit = models.CharField(

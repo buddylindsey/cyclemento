@@ -1,7 +1,6 @@
 from django.db import models
 
 from django_extensions.db.models import TimeStampedModel
-from model_utils import Choices
 
 from gear.utils import get_strava_gear
 from core.models import DistanceModel
