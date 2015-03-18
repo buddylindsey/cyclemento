@@ -2,6 +2,8 @@ from django.db import models
 
 from django_extensions.db.models import TimeStampedModel
 
+from model_utils import Choices
+
 from activities.models import Activity
 from core.models import DistanceModel
 from maintenance.models import Maintenance
