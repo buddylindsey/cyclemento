@@ -3,11 +3,11 @@ from django.db import models
 from django_extensions.db.models import TimeStampedModel
 from model_utils import Choices
 
-from .mixins import DistanceMixin
 from gear.utils import get_strava_gear
+from core.models import DistanceModel
 
 
-class Activity(DistanceMixin, TimeStampedModel):
+class Activity(DistanceModel, TimeStampedModel):
     user = models.ForeignKey('auth.User', related_name='activties')
 
     SOURCES = Choices(
@@ -18,20 +18,11 @@ class Activity(DistanceMixin, TimeStampedModel):
 
     external_id = models.CharField(max_length=100, blank=True, null=True)
 
-    DISTANCE_UNITS = Choices(
-        ('m','Meter'), ('ft', 'Foot'), ('mi', 'Miles'), ('km', 'Kilomieter'))
-
-    distance = models.FloatField(default=0.0, blank=True, null=True)
-    distance_unit = models.CharField(
-        max_length=5, blank=True, null=True, choices=DISTANCE_UNITS)
     activity_type = models.CharField(max_length=50, blank=True, null=True)
 
     name = models.CharField(max_length=255, blank=True, null=True)
     moving_time = models.FloatField(default=0.0)
     elapsed_time = models.FloatField(default=0.0)
-    total_elevation_gain = models.FloatField(default=0.0)
-    total_elevation_gain_unit = models.CharField(
-        max_length=5, blank=True, null=True, choices=DISTANCE_UNITS)
 
     start_date = models.DateTimeField(
         blank=True, null=True, help_text="Date you did the ride")

@@ -3,21 +3,15 @@ from django.db import models
 from django_extensions.db.models import TimeStampedModel
 from model_utils import Choices
 
-from activities.mixins import DistanceMixin
 from activities.models import Activity
+from core.models import DistanceModel
 from maintenance.models import Maintenance
 
 
-class Gear(DistanceMixin, TimeStampedModel):
+class Gear(DistanceModel, TimeStampedModel):
     user = models.ForeignKey('auth.User', related_name='gear')
     external_id = models.CharField(max_length=100, blank=True, null=True)
     name = models.CharField(max_length=255, blank=True, null=True)
-    distance = models.FloatField(blank=True, null=True)
-
-    DISTANCE_UNITS = Choices(
-        ('m','Meter'), ('ft', 'Foot'), ('mi', 'Miles'), ('km', 'Kilomieter'))
-    distance_unit =  models.CharField(
-        max_length=5, blank=True, null=True, choices=DISTANCE_UNITS)
 
     primary = models.BooleanField(default=False)
     brand_name = models.CharField(max_length=255, blank=True, null=True)
