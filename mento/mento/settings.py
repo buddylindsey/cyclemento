@@ -54,6 +54,7 @@ LOCAL_APPS = (
     'notifications',
     'maintenance',
     'contact',
+    'core',
 )
 
 INSTALLED_APPS = DEFAULT_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -134,6 +135,7 @@ DEFAULT_JINJA2_TEMPLATE_EXTENSION = '.jinja'
 # Social settings
 SOCIAL_AUTH_STRAVA_KEY = ''
 SOCIAL_AUTH_STRAVA_SECRET = ''
+REVOKE_TOKENS_ON_DISCONNECT = True
 
 SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = ['username', 'email']
 SOCIAL_AUTH_NEW_ASSOCIATION_REDIRECT_URL = '/accounts/new-association/'

@@ -1,4 +1,7 @@
 from django.db import models
+from django.dispatch import receiver
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
 
 from model_utils import Choices
 
@@ -22,3 +25,17 @@ class DistanceModel(models.Model):
         units = {'m': 0.000621371, 'ft': 0.000189394, 'mi': 1, 'km': 0.621371}
         return round(distance * units.get(unit, 1), 1)
 
+
+class DistanceSettings(models.Model):
+    user = models.OneToOneField('auth.User')
+    default_distance_unit = models.CharField(
+        max_length=5, choices=DistanceModel.DISTANCE_UNITS,
+        default=DistanceModel.DISTANCE_UNITS.mi)
+
+
+@receiver(post_save, sender=User)
+def distance_settings(sender, **kwargs):
+    user = kwargs.get('instance')
+    created = kwargs.get('created')
+    if created:
+        DistanceSettings.objects.create(user=user)

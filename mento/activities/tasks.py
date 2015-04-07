@@ -25,7 +25,7 @@ def get_strava_activities_by_user(user_id, days=None):
 
     if days:
         end = arrow.utcnow()
-        start = end.replace(days=days)
+        start = end.replace(days=(0-days))
 
         activity_iter = client.get_activities(
             before=end.datetime, after=start.datetime)
@@ -54,4 +54,4 @@ def retrieve_activities(days=None):
         social_auth__provider='strava').values_list('id', flat=True)
 
     for user in users:
-        get_strava_activities_by_user.delay(user_id=user, days=-1)
+        get_strava_activities_by_user.delay(user_id=user, days=1)
