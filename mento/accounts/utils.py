@@ -13,4 +13,3 @@ def generate_password():
 def get_strava_client(user):
     strava = user.social_auth.get()
     return Client(access_token=strava.tokens)
-
