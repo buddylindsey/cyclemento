@@ -32,6 +32,9 @@ class DistanceSettings(models.Model):
         max_length=5, choices=DistanceModel.DISTANCE_UNITS,
         default=DistanceModel.DISTANCE_UNITS.mi)
 
+    def __unicode__(self):
+        return "{} - {}".format(self.user.username, self.default_distance_unit)
+
 
 @receiver(post_save, sender=User)
 def distance_settings(sender, **kwargs):
