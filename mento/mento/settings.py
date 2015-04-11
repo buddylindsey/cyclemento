@@ -120,17 +120,28 @@ STATICFILES_DIRS = (
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_final')
 
-TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, 'templates'),
-)
-
-# Jinja Configuration
-TEMPLATE_LOADERS = (
-    'django_jinja.loaders.FileSystemLoader',
-    'django_jinja.loaders.AppLoader',
-)
-
-DEFAULT_JINJA2_TEMPLATE_EXTENSION = '.jinja'
+TEMPLATES = [
+    {
+        "BACKEND": "django_jinja.backend.Jinja2",
+        "APP_DIRS": True,
+        "DIRS": [os.path.join(BASE_DIR, 'templates')],
+        "OPTIONS": {
+            "match_extension": ".jinja",
+            "newstyle_gettext": True,
+            "autoescape": True,
+            "auto_reload": True,
+            "translation_engine": "django.utils.translation",
+        }
+    },
+    {
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": TEMPLATE_CONTEXT_PROCESSORS
+        },
+    },
+]
 
 # Social settings
 SOCIAL_AUTH_STRAVA_KEY = ''
