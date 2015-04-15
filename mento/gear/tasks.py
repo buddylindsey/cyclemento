@@ -5,9 +5,7 @@ import arrow
 
 from mento.celery import app
 
-from stravalib.client import Client
-
-from activities.tasks import get_strava_client
+from accounts.utils import get_strava_client
 
 
 @app.task
