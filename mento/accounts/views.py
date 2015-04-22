@@ -1,6 +1,6 @@
 from django.http import HttpResponseRedirect
 from django.views.generic import (
-    FormView, RedirectView, CreateView, TemplateView)
+    FormView, RedirectView, CreateView, TemplateView, ListView)
 from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth.forms import (
         AuthenticationForm, SetPasswordForm, PasswordChangeForm)
@@ -100,16 +100,18 @@ class SettingsView(LoginRequiredMixin, FormMessagesMixin, FormView):
         return context
 
 
-class DashboardView(LoginRequiredMixin, TemplateView):
+class DashboardView(LoginRequiredMixin, ListView):
     template_name = 'accounts/dashboard.jinja'
+    model = Activity
+    context_object_name = 'activities'
+    paginate_by = 10
+
+    def get_queryset(self):
+        qs = super(DashboardView, self).get_queryset()
+        return qs.filter(user=self.request.user).order_by('-start_date')
 
     def get_context_data(self, **kwargs):
         context = super(DashboardView, self).get_context_data(**kwargs)
-        activities = Activity.objects.filter(
-            user=self.request.user).order_by('-start_date')
-        context['activities']  = activities
         context['gears'] = Gear.objects.filter(user=self.request.user)
-        if activities.count() > 0:
-            context['maintenance_form'] = MaintenanceForm(
-                user=self.request.user)
+        context['maintenance_form'] = MaintenanceForm(user=self.request.user)
         return context

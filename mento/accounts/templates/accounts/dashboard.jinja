@@ -4,7 +4,7 @@
 {% include "accounts/messages.jinja" %}
 <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-8">
-        {% if maintenance_form %}
+        {% if activities.count() > 0 %}
         <div role="tabpanel">
           <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active"><a href="#maintenance" aria-controls="maintenance" role="tab" data-toggle="tab">Maintenance</a></li>
@@ -30,19 +30,36 @@
           </div>
         </div>
         {% endif %}
-        <div>
-            <h1>Activities</h1>
+        <div id='activities-feed'>
+            <h1>Activity Feed</h1>
             {% for activity in activities %}
             <div class="activity {{ activity.source }}">
                 <img src="{{ static("img/strava-logo.png") }}" class="activity-logo" alt="strava" />
-                <div class="activity-header">{{ activity.name }}</div>
-                <div class="activity-meta">{{ activity.actual_distance() }} mi</div>
+                <div class="activity-header">{{ activity.name }}: {{ activity.actual_distance() }} mi</div>
+                <div class="activity-footer">about {{ activity.start_date|ago }} from {{ activity.source }}</div>
             </div>
             {% else %}
             <div>
                 Sorry, you don't have any activities, yet.
             </div>
             {% endfor %}
+        </div>
+        <div>
+            <ul class="pagination">
+                {% if page_obj.has_previous() %}
+                <li><a href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+                {% endif %}
+                {% for pg in paginator.page_range %}
+                {% if page_obj.number == pg %}
+                <li class="active"><a href="?page={{ pg }}">{{ pg }}</a></li>
+                {% else %}
+                <li><a href="?page={{ pg }}">{{ pg }}</a></li>
+                {% endif %}
+                {% endfor %}
+                {% if page_obj.has_next() %}
+                <li><a href="?page={{ page_obj.next_page_number() }}">Next</a></li>
+                {% endif %}
+            </ul>
         </div>
     </div>
     <div class="col-xs-6 col-md-4">

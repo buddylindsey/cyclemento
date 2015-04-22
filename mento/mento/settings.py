@@ -131,6 +131,9 @@ TEMPLATES = [
             "autoescape": True,
             "auto_reload": True,
             "translation_engine": "django.utils.translation",
+            "filters": {
+                "ago": "core.filters.ago"
+            }
         }
     },
     {

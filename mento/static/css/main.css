@@ -88,6 +88,15 @@ header {
     border: red 1px solid;
 }
 
+#activities-feed {
+    margin-top: 65px
+}
+
+#activities-feed h1 {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
 .activity {
     min-height: 100px;
     padding-left: 60px;
@@ -102,11 +111,16 @@ header {
 }
 
 .activity .activity-header {
-    font-size: 1.25em;
+    font-size: 1.20em;
 }
 
 .activity .activity-meta {
 
+}
+
+.activity .activity-footer {
+    margin-top: 10px;
+    color: gray;
 }
 
 .center {
