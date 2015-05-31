@@ -19,7 +19,8 @@ class MaintenanceForm(forms.ModelForm):
         if user:
             self.fields['gear'].choices = user.gear.order_by(
                 'primary').values_list('id', 'name')
-            self.fields['activity'].initial = user.activties.latest().id
+            if user.activities.exists():
+                self.fields['activity'].initial = user.activities.latest().id
 
     def save(self, commit=True):
         maintenance = super(MaintenanceForm, self).save(commit=False)

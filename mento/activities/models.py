@@ -9,7 +9,7 @@ from core.models import DistanceModel
 
 
 class Activity(DistanceModel, TimeStampedModel):
-    user = models.ForeignKey('auth.User', related_name='activties')
+    user = models.ForeignKey('auth.User', related_name='activities')
 
     SOURCES = Choices(
         ('mento', 'CycleMento'), ('strava', 'Strava'),
